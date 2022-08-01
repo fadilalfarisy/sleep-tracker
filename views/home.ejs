@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/76480570da.js" crossorigin="anonymous"></script>
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container" style="width: 400px; margin-top: 50px;">
+        <h3 style="text-align: center;">HELLO</h3>
+        <!-- logout button -->
+        <form action="/logout" class="text-center">
+            <button class="btn btn-secondary">Logout</button>
+        </form>
+        <!-- start count -->
+        <form action="/track/start" method="get">
+            <div style="margin: 30px;" class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="submit">Start</button>
+            </div>
+        </form>
+        <!--  -->
+
+        <!-- info duration sleep -->
+        <div class="text-center">
+            <h4>Shortest = <%=convertHMS(min)%></h4>
+            <h4>Longest = <%=convertHMS(max)%></h4>
+            <h4>Average = <%=convertHMS(average)%></h4>
+        </div>
+
+        <ul class="list-group">
+            <% response.forEach(detail => {%>
+            <li class="list-group-item" style="display: inline;">
+                <!-- duration -->
+                <h5 style="margin: 0;"><strong><%=convertHMS(detail.stopSleep - detail.startSleep)%></strong></h5>
+                <!-- date -->
+                <p style="margin: 0;"><small><%=new Date(detail.startSleep).toDateString()%></small>
+                </p>
+                <!-- range time -->
+                <p style="margin: 0;"><small><%=convertHours(detail.startSleep)%> -
+                        <%=convertHours(detail.stopSleep)%></small></p>
+                <!-- button -->
+                <div class="d-grid gap-2 d-md-block position-absolute top-50 end-0 translate-middle-y">
+                    <!-- button edit track -->
+                    <form style="display:inline;" action="/track/edit/<%=detail.id%>" method="get">
+                        <button class="btn btn-warning"
+                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                            type="submit"><i class="fa fa-solid fa-pen"></i></button>
+                    </form>
+                    <!-- button delete track -->
+                    <form style="display:inline;" action="/track/delete/<%=detail.id%>" method="get">
+                        <button class="btn btn-danger"
+                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                            type="submit"><i class="fa fa-solid fa-trash"></i></button>
+                    </form>
+                </div>
+            </li>
+            <%})%>
+        </ul>
+
+
+    </div>
+</body>
+
+</html>
