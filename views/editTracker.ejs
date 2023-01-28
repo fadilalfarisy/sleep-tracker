@@ -11,7 +11,7 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-    </script>
+        </script>
     <title>Edit Track</title>
 </head>
 
@@ -109,11 +109,11 @@
 
         <div class="text-end" style="margin-top: 10px;">
             <!-- cancel button -->
-            <form action="/track" method="get" style="display: inline;">
+            <form action="/tracker" method="get" style="display: inline;">
                 <button class="btn btn-danger" type="submit">Cancel</button>
             </form>
             <!-- save button -->
-            <form action="/track/edit/<%=response.id%>" method="post" style="display: inline;" id="form-save">
+            <form action="/tracker-edit/<%=response.tracker_id%>" method="post" style="display: inline;" id="form-save">
                 <button class="btn btn-primary" type="submit">Save</button>
             </form>
         </div>

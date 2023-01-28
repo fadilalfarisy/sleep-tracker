@@ -11,7 +11,7 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-    </script>
+        </script>
     <title>Stop Sleep</title>
 </head>
 
@@ -19,9 +19,11 @@
     <div class="container" style="width: 400px; margin-top: 300px;">
         <h2 style="text-align: center;">START</h2>
         <!-- start time -->
-        <h3 style="text-align: center;"><%=start%></h3>
+        <h3 style="text-align: center;">
+            <%=start%>
+        </h3>
         <!-- button stop count -->
-        <form action="/track/stop" method="post">
+        <form action="/tracker/stop" method="post">
             <div style="margin: 30px;" class="d-grid gap-2 col-6 mx-auto">
                 <input type="hidden" name="idTracker" value=<%=idTracker%>>
                 <button id="stop" class="btn btn-danger" type="submit">Stop</button>
