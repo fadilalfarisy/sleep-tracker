@@ -9,6 +9,8 @@ const { PORT, SECRET_KEY } = config
 const app = express()
 
 //middleware
+//set public folder
+app.use(express.static(path.join(__dirname, '/views')))
 app.use(session({
     secret: SECRET_KEY,
     cookie: { sameSite: 'strict' },
