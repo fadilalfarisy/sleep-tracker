@@ -2,6 +2,7 @@ import { Sequelize, DataTypes } from "sequelize"
 import Users from './userModel.js'
 import Tracker from './trackerModel.js'
 import config from '../config/db.js'
+import mysql2 from 'mysql2'
 
 const sequelize = new Sequelize(
     config.DB,
@@ -9,7 +10,8 @@ const sequelize = new Sequelize(
     config.PASSWORD,
     {
         host: config.HOST,
-        dialect: config.DIALECT
+        dialect: config.DIALECT,
+        dialectModule: mysql2
     }
 );
 
