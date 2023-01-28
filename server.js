@@ -1,8 +1,14 @@
 import express from "express"
 import bodyParser from "body-parser"
 import session from "express-session"
+import path from 'path'
+import { fileURLToPath } from 'url'
 import router from "./src/routes/index.js"
 import config from './src/config/db.js'
+
+//config __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const { PORT, SECRET_KEY } = config
 
